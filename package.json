@@ -6,10 +6,14 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^3.15.0",
+    "@sap-cloud-sdk/http-client": "^3.15.0",
+    "@sap-cloud-sdk/resilience": "^3.15.0",
+    "@sap-cloud-sdk/util": "^3.15.0",
     "@sap/cds": "^7",
-    "express": "^4",
     "@sap/cds-hana": "^2",
-    "@sap/xssec": "^3"
+    "@sap/xssec": "^3",
+    "express": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
@@ -60,6 +64,16 @@
       "[production]": {
         "db": "hana",
         "auth": "xsuaa"
+      },
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata", 
+        "model": "srv/external/API_BUSINESS_PARTNER", 
+        "[production]": { 
+          "credentials": { 
+            "destination": "IM_Mock",
+            "path": "/api-business-partner"
+          }
+        }
       }
     }
   },

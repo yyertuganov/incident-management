@@ -13,7 +13,8 @@
     "@sap/cds": "^7",
     "@sap/cds-hana": "^2",
     "@sap/xssec": "^3",
-    "express": "^4"
+    "express": "^4",
+    "@sap/xb-msg-amqp-v100": "^0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
@@ -38,6 +39,13 @@
   },
   "cds": {
     "requires": {
+      "messaging": {
+        "kind": "local-messaging",
+        "[production]": {
+          "kind": "enterprise-messaging-shared",
+          "format": "cloudevents"
+        }
+      },
       "[development]": {
         "auth": {
           "kind": "mocked",
@@ -66,12 +74,12 @@
         "auth": "xsuaa"
       },
       "API_BUSINESS_PARTNER": {
-        "kind": "odata", 
-        "model": "srv/external/API_BUSINESS_PARTNER", 
-        "[production]": { 
-          "credentials": { 
+        "kind": "odata",
+        "model": "srv/external/API_BUSINESS_PARTNER",
+        "[production]": {
+          "credentials": {
             "destination": "IM_Mock",
-            "path": "/api-business-partner"
+            "path": "/odata/v2/api-business-partner"
           }
         }
       }

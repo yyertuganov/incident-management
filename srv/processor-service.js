@@ -9,9 +9,32 @@ class ProcessorService extends cds.ApplicationService {
     this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
     this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
     this.remoteService = await cds.connect.to('RemoteService');
+    this.messaging = await cds.connect.to('messaging');
+    this.messaging.on('sap.s4.beh.businesspartner.v1.BusinessPartner.Changed.v1', async ({ event, data }) => await this.onBusinessPartnerChanged(event, data))
     return super.init();
   }
 
+  async onBusinessPartnerChanged(event, data){
+    const { Customers } = this.entities;
+    const { BusinessPartnerAddress } = this.remoteService.entities;
+    //If Business Partner exists in Cache, then update
+    console.log('<< received', event, data)
+    const Id = data.BusinessPartner;
+    console.log("BusinessPartnerID", Id);
+    var customer =  await this.S4bupa.run(SELECT.one(BusinessPartnerAddress, address => {
+      address('*'),
+      address.email(emails => {
+        emails('*')})
+      }).where({BusinessPartner: Id}));
+    console.log("customer after read email", customer.email[0].email);
+    
+    if(customer){
+      customer.email = customer.email[0].email
+      const result= await cds.run(UPDATE(Customers).where({ID: customer.ID}).set({email:customer.email}));
+      console.log("result",result);
+    }
+  }
+  
   async onCustomerCache(req, next) {
     const { Customers } = this.entities;
     const newCustomerId = req.data.customer_ID;

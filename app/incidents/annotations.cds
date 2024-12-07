@@ -81,7 +81,7 @@ annotate service.Incidents with @(
             $Type : 'UI.DataField',
             Value : customer.name,
         },
-        TypeImageUrl : 'sap-icon://alert',
+        TypeImageUrl : 'sap-icon://blur',
     },
     UI.FieldGroup #i18nDetails : {
         $Type : 'UI.FieldGroupType',

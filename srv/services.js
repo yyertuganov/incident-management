@@ -26,7 +26,7 @@ class ProcessorService extends cds.ApplicationService {
       const incidents = Array.isArray(data) ? data : [data];
       incidents.forEach((incident) => {
         if (incident.title?.toLowerCase().includes("yy")) {
-          let temp = incident.title + " Yergali"
+          let temp = incident.title + " Test for YY"
           incident.title = temp;
         }
       });

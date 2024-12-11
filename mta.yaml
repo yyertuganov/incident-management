@@ -11,7 +11,7 @@ build-parameters:
       commands:
         - npm ci
         - npx cds build --production
-        - mkdir -p resources  
+        - mkdir -p resources
 modules:
   - name: incident-management-srv
     type: nodejs
@@ -30,6 +30,7 @@ modules:
       - name: incident-management-db
       - name: incident-management-auth
       - name: incident-management-destination
+      - name: incident-management-destination-service      
 
   - name: incident-management-db-deployer
     type: hdb
@@ -97,7 +98,6 @@ modules:
               ServiceInstanceName: incident-management-auth
               ServiceKeyName: incident-management-auth-key
               sap.cloud.service: incidentmanagement.service
-
 resources:
   - name: incident-management-db
     type: com.sap.xs.hdi-container
@@ -118,6 +118,11 @@ resources:
       config:
         xsappname: incident-management-${org}-${space}
         tenant-mode: dedicated
+  - name: incident-management-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: lite
+      service: destination
   - name: incident-management-destination
     type: org.cloudfoundry.managed-service
     parameters:

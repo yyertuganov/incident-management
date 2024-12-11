@@ -1,0 +1,53 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:macros="sap.fe.macros"
+	xmlns:vbm="sap.ui.vbm"
+>
+<Dialog id="_IDGenDialog" title="Location">
+    <VBox id="_IDGenVBox">
+        <vbm:GeoMap
+            id="Map"
+            mapConfiguration='{
+			"MapProvider": [{
+					"name": "Openstreetmap",
+					"copyright": "&lt;b&gt;&lt;a href=\"http://www.openstreetmap.org/copyright\"&gt;© openstreetmap&lt;/a&gt;&lt;/b&gt;",
+					"Source": [{
+						"id": "s1",
+						"url": "http://a.tile.openstreetmap.org/{LOD}/{X}/{Y}.png"
+					}, {
+						"id": "s2",
+						"url": "http://b.tile.openstreetmap.org/{LOD}/{X}/{Y}.png"
+					}, {
+						"id": "s3",
+						"url": "http://c.tile.openstreetmap.org/{LOD}/{X}/{Y}.png"
+				}]
+			}],
+			"MapLayerStacks": [{
+				"name": "DEFAULT",
+				"MapLayer": {
+					"name": "layer1",
+					"refMapProvider": "Openstreetmap",
+					"opacity": "1",
+					"colBkgnd": "RGB(255,255,255)"
+				}
+			}]
+		}'
+            refMapLayerStack="DEFAULT"
+            initialZoom="10"
+            initialPosition="{customer/pos}"
+        >
+            <vbm:Spots id="_IDGenSpots">
+                <vbm:Spot id="_IDGenSpot"
+                    position="{customer/pos}"
+                    tooltip="{customer/name}"
+                    type="Success"
+                />
+            </vbm:Spots>
+        </vbm:GeoMap>
+    </VBox>
+	<endButton>
+		<Button id="_IDGenButton" text="Close" press=".closeDialog" />
+	</endButton>
+</Dialog>
+</core:FragmentDefinition>

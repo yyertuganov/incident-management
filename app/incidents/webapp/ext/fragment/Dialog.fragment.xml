@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:macros="sap.fe.macros"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+>
+	<Dialog title="Confirmation" id="confirmationDialog" contentWidth="38rem">
+		<content>
+			<MessageStrip
+				id="message"
+				text="{dialog>/text}"
+				type="Information"
+				showIcon="true"
+                enableFormattedText="true"
+				class="sapUiSmallMarginTop sapUiSmallMarginBottom sapUiSmallMarginBeginEnd"
+			/>
+			
+		</content>
+		<beginButton>
+			<Button id="continue" text="Continue" press="onConfirm" type="Emphasized" />
+		</beginButton>
+		<endButton>
+			<Button id="cancel" press="onCancel" text="Cancel" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
+

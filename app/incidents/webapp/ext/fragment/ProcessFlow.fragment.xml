@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.suite.ui.commons"
+    xmlns:m="sap.m"
+    xmlns:macros="sap.fe.macros"
+>
+    <ProcessFlow
+        id="processflow"
+        foldedCorners="false"
+        showLabels="true"
+        wheelZoomable="false"
+        class="PFLayoutSpec"
+        nodes="{ path: 'processNodesModel>/nodes'}"
+        lanes="{processsFlowModel>/lanes}"
+    >
+        <nodes>
+            <ProcessFlowNode
+                id="_IDGenProcessFlowNode"
+                laneId="{processNodesModel>laneId}"
+                nodeId="{processNodesModel>nodeId}"
+                title="{processNodesModel>title}"
+                children="{processNodesModel>children}"
+                state="{processNodesModel>state}"
+                stateText="{processNodesModel>stateText}"
+            />
+        </nodes>
+        <lanes>
+            <ProcessFlowLaneHeader
+                id="_IDGenProcessFlowLaneHeader"
+                laneId="{processsFlowModel>id}"
+                iconSrc="{processsFlowModel>icon}"
+                text="{processsFlowModel>label}"
+                position="{processsFlowModel>position}"
+            />
+        </lanes>
+    </ProcessFlow>
+</core:FragmentDefinition>

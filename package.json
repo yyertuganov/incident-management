@@ -6,7 +6,12 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js/change-tracking": "^1.0.7",
     "@cap-js/hana": "^1",
+    "@sap-cloud-sdk/connectivity": "^3.24.0",
+    "@sap-cloud-sdk/http-client": "^3.24.0",
+    "@sap-cloud-sdk/resilience": "^3.24.0",
+    "@sap-cloud-sdk/util": "^3.24.0",
     "@sap/cds": "^8",
     "@sap/xssec": "^4",
     "express": "^4"
@@ -57,7 +62,17 @@
       },
       "html5-repo": true,
       "destinations": true,
-      "workzone": true
+      "workzone": true,
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_BUSINESS_PARTNER",
+        "[production]": {
+          "credentials": {
+            "destination": "remotemock",
+            "path": "/odata/v2/api-business-partner"
+          }
+        }
+      }
     },
     "sql": {
       "native_hana_associations": false

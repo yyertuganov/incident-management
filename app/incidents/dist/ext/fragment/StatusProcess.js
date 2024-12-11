@@ -1,0 +1,2 @@
+sap.ui.define([],function(){"use strict";const n={N:1,A:2,I:2,H:3,R:3,C:4};return{formatStatus:function(t,e){if(typeof t==="undefined")return"None";const r=n[t];if(t==="H"&&e=="3"){return"Warning"}if(t==="I"&&e=="2"){return"Warning"}return e<=r?"Success":"None"}}});
+//# sourceMappingURL=StatusProcess.js.map

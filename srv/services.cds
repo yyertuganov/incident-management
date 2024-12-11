@@ -13,6 +13,20 @@ service ProcessorService {
 annotate ProcessorService.Incidents with @odata.draft.enabled; 
 annotate ProcessorService with @(requires: 'support');
 
+annotate ProcessorService.Incidents with @changelog: {
+  keys: [ customer.name, createdAt ]
+} {
+  title    @changelog;
+  status   @changelog;
+  customer @changelog: [ customer.name ];
+};
+
+annotate ProcessorService.Incidents.conversation with @changelog: {
+  keys: [ author, timestamp ]
+} {
+  message  @changelog;
+}
+
 /**
  * Service used by administrators to manage customers and incidents.
  */

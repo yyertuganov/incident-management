@@ -1,0 +1,22 @@
+{
+    "spots": [
+      {
+        "pos": "8.641622;49.293696;0",
+        "tooltip": "Walldorf, Germany",
+        "label": "Walldorf",
+        "customerID": "1004155"
+      },
+      {
+        "pos": "77.714421;12.977788;0",
+        "tooltip": "Bangalore, India",
+        "label": "Bangalore",
+        "customerID": "1004161"
+      },
+      {
+        "pos": "-74.000380;40.753616;0",
+        "tooltip": "New York, USA",
+        "label": "New York",
+        "customerID": "1004100"
+      }
+    ]
+  }

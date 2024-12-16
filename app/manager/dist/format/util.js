@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["sap/ui/core/message/MessageType","sap/ui/core/format/DateFormat"],function(e,t){"use strict";var r=function(e){e["High"]="H";e["Medium"]="M";e["Low"]="L";return e}(r||{});function n(t){if(t===r.High){return e.Error}else if(t===r.Medium){return e.Warning}return e.Information}function i(e){const r=t.getDateTimeWithTimezoneInstance();const n=r.parse(e);const i=t.getDateInstance({relative:true});return i.format(n[0])}var o={__esModule:true};o.Urgency=r;o.formatHighlightColor=n;o.formatDaysAgo=i;return o});
+//# sourceMappingURL=util.js.map
